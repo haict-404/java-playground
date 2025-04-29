@@ -1,0 +1,36 @@
+package com.example.persistence.entity;
+
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import java.time.ZonedDateTime;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Entity
+@Table(name = "account")
+public class Account {
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "account_id_seq")
+    @SequenceGenerator(name = "account_id_seq", sequenceName = "postgres_air.account_account_id_seq", allocationSize = 1)
+    @Column(name = "account_id", nullable = false)
+    private Integer accountId;
+
+    @Column(name = "login", nullable = false)
+    private String login;
+
+    @Column(name = "first_name", nullable = false)
+    private String firstName;
+
+    @Column(name = "last_name", nullable = false)
+    private String lastName;
+
+    @Column(name = "frequent_flyer_id")
+    private Integer frequentFlyerId;
+
+    @Column(name = "update_ts")
+    private ZonedDateTime updateTs;
+}

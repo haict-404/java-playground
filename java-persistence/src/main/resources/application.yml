@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: java-persistence
+  datasource:
+    url: jdbc:postgresql://localhost:5432/postgres_air
+
+    username: postgres
+    password: postgres
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+        default_schema: postgres_air
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
