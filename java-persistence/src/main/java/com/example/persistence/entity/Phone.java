@@ -28,7 +28,7 @@ public class Phone {
     @Column(name = "phone_id")
     private Integer phoneId;
 
-    @ManyToOne (fetch = FetchType.EAGER)
+    @ManyToOne
     @JoinColumn(name = "account_id")
     @JsonBackReference
     private Account account;

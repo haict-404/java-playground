@@ -19,8 +19,7 @@ public class AccountSubService {
 
     if (accountOpt.isPresent()) {
       Account account = accountOpt.get();
-      account.setLastName(null);
-//      entityManager.persist(account);
+      account.setLastName(null); //this will lead to error because of not-null constraint, this transaction will be rolled back
       System.out.println("Account updated: " + account);
     } else {
       System.out.println("Account not found");
