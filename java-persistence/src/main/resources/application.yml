@@ -8,9 +8,11 @@ spring:
     password: postgres
     driver-class-name: org.postgresql.Driver
   jpa:
-    show-sql: true
+    show-sql: false
     properties:
       hibernate:
         format_sql: true
         default_schema: postgres_air
+        c3p0:
+          timeout: 20000
     database-platform: org.hibernate.dialect.PostgreSQLDialect
