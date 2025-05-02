@@ -14,11 +14,6 @@ public class AccountService {
   private final AccountRepository accountRepository;
   private final AccountSubService accountSubService;
 
-  public void printAccounts() {
-    long count = accountRepository.count();
-    System.out.println("Total accounts: " + count);
-  }
-
   @Transactional
   public void updateAccount() {
     var accountOpt = accountRepository.findById(662339);
