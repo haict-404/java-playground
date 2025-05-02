@@ -20,7 +20,7 @@ public class AccountService {
 
   @Transactional
   public void updateAccount() {
-    var accountOpt = accountRepository.findById(662339L);
+    var accountOpt = accountRepository.findById(662339);
     if (accountOpt.isPresent()) {
       Account account = accountOpt.get();
       account.setLastName("main");
@@ -35,6 +35,5 @@ public class AccountService {
       System.out.println("Account not found");
     }
   }
-
 
 }

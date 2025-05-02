@@ -15,7 +15,7 @@ public class AccountSubService {
 
   @Transactional(propagation = Propagation.REQUIRES_NEW)
   protected void updateOther() {
-    var accountOpt = accountRepository.findById(735827L);
+    var accountOpt = accountRepository.findById(735827);
 
     if (accountOpt.isPresent()) {
       Account account = accountOpt.get();

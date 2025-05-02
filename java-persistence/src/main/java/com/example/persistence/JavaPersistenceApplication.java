@@ -2,6 +2,7 @@ package com.example.persistence;
 
 import com.example.persistence.repository.AccountRepository;
 import com.example.persistence.service.AccountService;
+import com.example.persistence.service.PhoneService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -16,13 +17,14 @@ public class JavaPersistenceApplication {
     }
 
     @Bean
-    CommandLineRunner runner(AccountService accountService) {
+    CommandLineRunner runner(AccountService accountService, PhoneService phoneService) {
         return args -> {
             // This is where you can add any startup logic if needed
             System.out.println("Java Persistence Application started successfully!");
-
-            accountService.updateAccount();
-
+//            accountService.updateAccount();
+            long startTime = System.currentTimeMillis();
+            System.out.println(phoneService.getPhones().size());
+            System.out.println("Time taken: " + (System.currentTimeMillis() - startTime) + "ms");
         };
     }
 }
