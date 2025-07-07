@@ -12,5 +12,27 @@ services:
       - "5432:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
+  keycloak:
+    image: quay.io/keycloak/keycloak:latest
+    environment:
+      - KC_BOOTSTRAP_ADMIN_USERNAME=admin
+      - KC_BOOTSTRAP_ADMIN_PASSWORD=admin
+      - KC_DB=postgres
+      - KC_DB_URL=jdbc:postgresql://postgres/keycloak?user=postgres&password=postgres
+    ports:
+      - "8043:8080"
+    depends_on:
+      - postgres
+    command:
+      - start-dev
+  jenkins:
+    image: jenkins/jenkins:lts
+    container_name: jenkins
+    ports:
+      - "8044:8080"
+      - "50000:50000"
+    volumes:
+      - jenkins_home:/var/jenkins_home
 volumes:
   postgres_data:
+  jenkins_home:

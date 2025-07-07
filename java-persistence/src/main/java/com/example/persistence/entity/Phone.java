@@ -3,24 +3,25 @@ package com.example.persistence.entity;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import java.time.ZonedDateTime;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.envers.AuditTable;
+import org.hibernate.envers.Audited;
 
 @Entity
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "phone", schema = "postgres_air")
+@Table(name = "phone")
+@Audited(withModifiedFlag = true)
 public class Phone {
 
     @Id
@@ -31,6 +32,7 @@ public class Phone {
     @ManyToOne
     @JoinColumn(name = "account_id")
     @JsonBackReference
+    @Audited
     private Account account;
 
     @Column(name = "phone")

@@ -25,9 +25,11 @@ public class JavaPersistenceApplication {
     return args -> {
       System.out.println("Java Persistence Application started successfully!");
       //test AOP, transaction propagation
-      accountService.updateAccount();
+//      accountService.updateAccount();
       //test N+1 problem
-      testNPlus1Problem(phoneService);
+//      testNPlus1Problem(phoneService);
+      //test audit entity
+
     };
   }
 

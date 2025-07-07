@@ -1,18 +1,37 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /api
 spring:
   application:
     name: java-persistence
   datasource:
     url: jdbc:postgresql://localhost:5432/postgres_air
-
     username: postgres
     password: postgres
     driver-class-name: org.postgresql.Driver
+    type: com.zaxxer.hikari.HikariDataSource
+    hikari:
+      connection-test-query: SELECT 1
+      auto-commit: true
+#      leak-detection-threshold: 2000
+      catalog: postgres_air
   jpa:
     show-sql: false
     properties:
       hibernate:
+        envers:
+          autoRegisterListeners: true
+#          audit_strategy: org.hibernate.envers.strategy.ValidityAuditStrategy
+#          audit_table_suffix: _HISTORY
+#          revision_on_collection_change: true
+#          do_not_audit_optimistic_locking_field: false
+#          store_data_at_delete: true
+#          audit_strategy_validity_end_rev_field_name: REVISION_END
         format_sql: true
         default_schema: postgres_air
         c3p0:
           timeout: 20000
+    hibernate:
+      ddl-auto: update
     database-platform: org.hibernate.dialect.PostgreSQLDialect

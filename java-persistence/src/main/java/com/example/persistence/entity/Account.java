@@ -9,12 +9,17 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.ZonedDateTime;
+import org.hibernate.envers.AuditJoinTable;
+import org.hibernate.envers.AuditTable;
+import org.hibernate.envers.Audited;
+import org.hibernate.envers.NotAudited;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
 @Table(name = "account")
+@Audited(withModifiedFlag = true)
 public class Account {
 
   @Id

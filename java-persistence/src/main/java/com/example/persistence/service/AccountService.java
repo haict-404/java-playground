@@ -37,10 +37,11 @@ public class AccountService {
         -> main transaction will be rolled back too
         */
 //        updateOther();
+
+        System.out.println("Account updated: " + account);
       } catch (Exception e) {
         System.out.println("Error updating account: " + e.getMessage());
       }
-      System.out.println("Account updated: " + account);
     } else {
       System.out.println("Account not found");
     }
